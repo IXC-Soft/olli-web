@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 
 <head>
@@ -114,6 +114,7 @@
     }
   })();
   </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -125,20 +126,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#903BFF">
-  
-  <title>Olli Cam 003 SN — Câmera Inteligente Olli</title>
-  <meta name="description" content="Segurança inteligente em alta definição. Conheça a câmera inteligente Olli Cam 003 SN com visão noturna, áudio bidirecional e detecção de movimento.">
-  <link rel="canonical" href="https://ollismart.com/dispositivos/olli-cam-003-sn/">
+  <title>Exclusão da conta e dados pessoais — Olli</title>
+  <meta name="description"
+    content="Solicitação de exclusão da conta e dados pessoais da Olli.">
 
-  <!-- Google Fonts: Barlow & Noto Sans -->
+  <!-- Google Fonts: Barlow (500, 600, 700) & Noto Sans (400, 600, 700) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Noto+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet">
 
-  <!-- Tokens de marca -->
-  <link rel="stylesheet" href="../../tokens.css">
+  <!-- Tokens de marca — fonte única de verdade -->
+  <link rel="stylesheet" href="../tokens.css">
+
+  <!-- Tally Embed Script -->
+  <script async src="https://tally.so/widgets/embed.js"></script>
 
   <style>
+    /* ==========================================================================
+       RESET & BASE STYLES (Fonte de verdade: Home /index.html)
+       ========================================================================== */
+
     *,
     *::before,
     *::after {
@@ -151,6 +160,7 @@
       scrollbar-color: #8C33FF #F4F2F6;
     }
 
+    /* Custom Scrollbar Global (Chromium / Safari) */
     ::-webkit-scrollbar {
       width: 10px;
     }
@@ -172,6 +182,10 @@
     body {
       margin: 0;
       padding: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
       background-color: var(--secondary);
       color: var(--neutral);
       font-family: var(--font-body);
@@ -180,42 +194,38 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Keyframe Animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-    }
-
-    @keyframes float-centered {
-      0%, 100% { transform: translateY(-50%); }
-      50% { transform: translateY(calc(-50% - 12px)); }
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(144, 59, 255, 0.2); }
-      50% { box-shadow: 0 0 40px rgba(163, 92, 255, 0.45); }
-    }
-
-    @keyframes cta-shimmer {
-      0% { left: -120%; }
-      40%, 100% { left: 180%; }
-    }
-
     /* Helper Utilities */
     .hidden {
       display: none !important;
     }
 
-    /* ==========================================================================
-       PRIMARY BUTTON COMPONENT (.primary-button)
-       ========================================================================== */
+    /* Keyframe Animations */
+    @keyframes cta-shimmer {
+      0% {
+        left: -120%;
+      }
+      40%,
+      100% {
+        left: 180%;
+      }
+    }
 
+    @keyframes particle-float {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: translate(15px, -20px) scale(1.15);
+        opacity: 0.75;
+      }
+    }
+
+    /* ==========================================================================
+       PRIMARY BUTTON COMPONENT (Reutilizado no Header CTA)
+       ========================================================================== */
     .primary-button {
       position: relative;
       z-index: 1;
@@ -282,116 +292,9 @@
       opacity: 0;
     }
 
-    /* Primary Button — White Variant (.primary-button--white) */
-    .primary-button--white {
-      background-color: #F4EBFF;
-      color: var(--primary);
-    }
-
-    .primary-button--white::before {
-      background: #FFFFFF;
-    }
-
-    .primary-button--white::after {
-      background: linear-gradient(120deg,
-          rgba(144, 59, 255, 0) 0%,
-          rgba(144, 59, 255, 0.18) 50%,
-          rgba(144, 59, 255, 0) 100%);
-    }
-
-    .primary-button--white .icon-wrapper,
-    .primary-button--white [class*="-icon-wrapper"] {
-      background-color: var(--primary);
-    }
-
     /* ==========================================================================
-       SECONDARY BUTTON COMPONENT (.secondary-button / .case-secondary-cta - SINCRONIZADO COM DESIGN SYSTEM)
+       HEADER COMPONENT (.site-header) — Fonte de verdade: Home
        ========================================================================== */
-
-    .secondary-button {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 28px;
-      border-radius: 9999px;
-      background: transparent;
-      border: 1px solid #8C33FF;
-      color: #8C33FF;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
-      box-sizing: border-box;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .secondary-button-icon {
-      flex-shrink: 0;
-      transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    @media (min-width: 768px) {
-      .secondary-button {
-        font-size: 18px;
-      }
-    }
-
-    .secondary-button:hover {
-      background-color: rgba(140, 51, 255, 0.08);
-      border-color: #8C33FF;
-      color: #8C33FF;
-      transform: translateY(-2px);
-    }
-
-    /* ==========================================================================
-       APP DOWNLOAD BUTTONS COMPONENT (.app-download-buttons)
-       ========================================================================== */
-
-    .hero-actions-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .app-download-buttons {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
-      width: 100%;
-    }
-
-    .app-download-link {
-      display: inline-block;
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-
-    .app-download-link:hover {
-      transform: translateY(-2px);
-      opacity: 0.92;
-    }
-
-    .app-download-img {
-      display: block;
-      width: auto;
-      max-width: 181px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* ==========================================================================
-       HEADER COMPONENT (.site-header)
-       ========================================================================== */
-
     .site-header {
       position: fixed;
       top: 0;
@@ -708,7 +611,6 @@
       flex-shrink: 0;
     }
 
-    /* Mobile Navigation Backdrop Blur Overlay */
     .mobile-menu-overlay {
       position: fixed;
       inset: 0;
@@ -742,215 +644,144 @@
       }
     }
 
-
-
-    /* Hero Section */
-    .hero-section {
-      padding-block: 80px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      background: radial-gradient(circle at 80% 20%, rgba(144, 59, 255, 0.15) 0%, transparent 60%);
-    }
-
-    @media (min-width: 768px) {
-      .hero-section {
-        padding-top: 120px;
-        padding-bottom: 80px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .hero-section {
-        padding-top: 140px;
-        padding-bottom: 100px;
-      }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    /* Layout exclusivo Tablet e Mobile: Reorganização vertical da Hero (< 1024px) */
-    @media (max-width: 1023px) {
-      .hero-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        max-width: 420px;
-        margin: 0 auto;
-        gap: 40px;
-      }
-
-      .hero-media-wrapper {
-        order: 1;
-        width: 100%;
-        max-width: 100%;
-        justify-content: flex-start;
-      }
-
-      .product-card {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .hero-content {
-        order: 2;
-        width: 100%;
-        max-width: 100%;
-        text-align: left;
-      }
-
-      .hero-title,
-      .hero-description {
-        max-width: 100%;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 80px;
-      }
-    }
-
-    .section-badge,
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 16px;
-      background: rgba(144, 59, 255, 0.1);
-      border: 1px solid rgba(144, 59, 255, 0.3);
-      border-radius: 9999px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      margin-bottom: 8px;
-    }
-
-    @media (min-width: 768px) {
-      .section-badge,
-      .hero-badge {
-        margin-bottom: 16px;
-      }
-    }
-
-    .hero-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--primary, #903BFF);
-      box-shadow: 0 0 10px var(--primary);
-      animation: pulse-dot 2s infinite ease-in-out;
-    }
-
-    .hero-badge-text {
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--primary-light, #A35CFF);
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.75); }
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: 42px;
-      line-height: 1.1;
-      font-weight: 700;
-      margin: 0 0 20px 0;
-      color: var(--neutral);
-    }
-
-    @media (min-width: 768px) {
-      .hero-title {
-        font-size: 64px;
-      }
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .hero-title {
-        font-size: 58px;
-      }
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, #FFF 30%, var(--primary-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-description {
-      font-size: 18px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin: 0 0 36px 0;
-      max-width: 580px;
-    }
-
-    /* Product Showcase Image Container */
-    .hero-media-wrapper {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-media-backdrop {
-      position: absolute;
+    /* ==========================================================================
+       CONTEÚDO PRINCIPAL / TALLY EMBED SECTION
+       ========================================================================== */
+    .account-removal-main {
+      flex: 1 0 auto;
       width: 100%;
-      height: 100%;
-      border-radius: 24px;
-      background: radial-gradient(circle, rgba(144, 59, 255, 0.2) 0%, transparent 70%);
-      filter: blur(40px);
-      z-index: -1;
-    }
-
-    .product-card {
+      padding-top: 80px;
+      padding-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: var(--secondary);
       position: relative;
-      border-radius: 24px;
-      border: 1px solid var(--border-dark);
-      background: rgba(44, 44, 44, 0.4);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 16px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-      animation: float 6s ease-in-out infinite;
       overflow: hidden;
-      width: 100%;
-      max-width: 420px;
     }
 
-    .product-img {
+    @media (min-width: 768px) {
+      .account-removal-main {
+        padding-top: 104px;
+        padding-bottom: 64px;
+      }
+    }
+
+    .ambient-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ambient-particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particle-float 8s ease-in-out infinite;
+    }
+
+    .ambient-particle-1 {
+      top: 18%;
+      left: 10%;
+      width: 12px;
+      height: 12px;
+      background: rgba(163, 92, 255, 0.45);
+      box-shadow: 0 0 16px rgba(163, 92, 255, 0.6);
+    }
+
+    .ambient-particle-2 {
+      top: 40%;
+      right: 12%;
+      width: 16px;
+      height: 16px;
+      background: rgba(144, 59, 255, 0.4);
+      box-shadow: 0 0 20px rgba(144, 59, 255, 0.5);
+      animation-delay: 2.5s;
+    }
+
+    .ambient-particle-3 {
+      bottom: 25%;
+      left: 15%;
+      width: 10px;
+      height: 10px;
+      background: rgba(144, 59, 255, 0.5);
+      box-shadow: 0 0 14px rgba(144, 59, 255, 0.6);
+      animation-delay: 4.5s;
+    }
+
+    .ambient-particle-4 {
+      bottom: 12%;
+      right: 16%;
+      width: 14px;
+      height: 14px;
+      background: rgba(163, 92, 255, 0.4);
+      box-shadow: 0 0 18px rgba(163, 92, 255, 0.5);
+      animation-delay: 1.2s;
+    }
+
+    .account-removal-container {
       width: 100%;
-      height: auto;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 640px) {
+      .account-removal-container {
+        padding: 0 24px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .account-removal-container {
+        padding: 0 32px;
+      }
+    }
+
+    .tally-iframe-wrapper {
+      width: 80%;
+      position: relative;
+      background-color: #FFFFFF;
+      border: 1px solid var(--card-border, #E6E5E9);
       border-radius: 16px;
-      display: block;
-      object-fit: cover;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      box-sizing: border-box;
     }
 
+    @media (min-width: 768px) {
+      .tally-iframe-wrapper {
+        padding: 40px;
+        border-radius: 24px;
+      }
+    }
 
+    .tally-iframe-wrapper iframe {
+      width: 100% !important;
+      min-height: 800px;
+      border: 0;
+      display: block;
+      background: transparent;
+    }
 
     /* ==========================================================================
-       FOOTER COMPONENT (.footer)
+       FOOTER COMPONENT (.footer) — Fonte de verdade: Home
        ========================================================================== */
-
     .footer {
       background-color: var(--secondary);
       border-top: 1px solid var(--border-dark);
       padding: 16px 0;
       width: 100%;
+      flex-shrink: 0;
     }
 
     .footer-container {
@@ -1004,25 +835,6 @@
       }
     }
 
-    .footer-copyright {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--text-muted, #AFAFB1);
-      margin: 0;
-      text-align: center;
-      white-space: normal;
-    }
-
-    @media (min-width: 768px) {
-      .footer-copyright {
-        font-size: 14px;
-        white-space: nowrap;
-        text-align: right;
-      }
-    }
-
     .footer-brand {
       display: inline-flex;
       align-items: center;
@@ -1049,6 +861,25 @@
       display: block;
       transition: transform 0.3s ease;
     }
+
+    .footer-copyright {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-muted, #AFAFB1);
+      margin: 0;
+      text-align: center;
+      white-space: normal;
+    }
+
+    @media (min-width: 768px) {
+      .footer-copyright {
+        font-size: 14px;
+        white-space: nowrap;
+        text-align: right;
+      }
+    }
   </style>
 </head>
 
@@ -1065,8 +896,8 @@
   <div id="mobile-menu" class="header-mobile-menu hidden">
     <!-- Header do Menu Mobile -->
     <div class="mobile-menu-header">
-      <a href="../../index.html#home" class="mobile-menu-logo" aria-label="Home Olli">
-        <img src="../../assets/shared/logo-olli.svg" alt="Olli" class="header-logo-img" />
+      <a href="../#home" class="mobile-menu-logo" aria-label="Home Olli">
+        <img src="../assets/shared/logo-olli.svg" alt="Olli" class="header-logo-img" />
       </a>
       <button id="mobile-menu-close" type="button" class="mobile-menu-close" aria-label="Fechar menu">
         <svg class="header-mobile-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1077,12 +908,12 @@
 
     <!-- Navegação Mobile -->
     <nav class="mobile-navigation" aria-label="Navegação Mobile">
-      <a href="../../index.html#home" class="header-mobile-link">Home</a>
-      <a href="../../index.html#servicos" class="header-mobile-link">Serviços</a>
-      <a href="../../index.html#encontre" class="header-mobile-link">Encontre a Olli</a>
+      <a href="../#home" class="header-mobile-link">Home</a>
+      <a href="../#servicos" class="header-mobile-link">Serviços</a>
+      <a href="../#encontre" class="header-mobile-link">Encontre a Olli</a>
     </nav>
 
-    <a href="../../index.html#contato" class="primary-button header-primary-cta mobile-menu-cta">
+    <a href="../#contato" class="primary-button header-primary-cta mobile-menu-cta">
       <span class="header-primary-cta-text">Quero ser um parceiro</span>
     </a>
   </div>
@@ -1095,25 +926,24 @@
 
       <!-- Left Zone: Brand Logo -->
       <div class="header-left">
-        <a href="../../index.html#home" class="header-logo" aria-label="Home Olli">
-          <img src="../../assets/shared/logo-olli.svg" alt="Olli" class="header-logo-img" />
+        <a href="../#home" class="header-logo" aria-label="Home Olli">
+          <img src="../assets/shared/logo-olli.svg" alt="Olli" class="header-logo-img" />
         </a>
       </div>
 
       <!-- Center Zone: Desktop Navigation Links -->
       <nav class="header-center header-nav" aria-label="Navegação Principal">
-        <a href="../../index.html#home" class="header-nav-link">Home</a>
-        <a href="../../index.html#servicos" class="header-nav-link">Serviços</a>
-        <a href="../../index.html#encontre" class="header-nav-link">Encontre a Olli</a>
+        <a href="../#home" class="header-nav-link">Home</a>
+        <a href="../#servicos" class="header-nav-link">Serviços</a>
+        <a href="../#encontre" class="header-nav-link">Encontre a Olli</a>
       </nav>
 
       <!-- Right Zone: Desktop CTA Primary Button -->
       <div class="header-right header-desktop-cta-wrapper">
-        <a href="../../index.html#contato" class="primary-button header-primary-cta">
+        <a href="../#contato" class="primary-button header-primary-cta">
           <span class="header-primary-cta-text">Quero ser um parceiro</span>
         </a>
       </div>
-
 
       <!-- Mobile Toggle Action Button -->
       <div class="header-actions">
@@ -1133,57 +963,32 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-grid">
-        <!-- Content -->
-        <div class="hero-content">
-          <div class="section-badge hero-badge">
-            <span class="hero-badge-dot"></span>
-            <span class="hero-badge-text">ESPAÇOS INTELIGENTES</span>
-          </div>
+  <!-- ========================================== -->
+  <!-- CONTEÚDO PRINCIPAL (FORMULÁRIO TALLY)       -->
+  <!-- ========================================== -->
+  <main class="account-removal-main">
+    <!-- Ambient Background Particles -->
+    <div class="ambient-particles" aria-hidden="true">
+      <div class="ambient-particle ambient-particle-1"></div>
+      <div class="ambient-particle ambient-particle-2"></div>
+      <div class="ambient-particle ambient-particle-3"></div>
+      <div class="ambient-particle ambient-particle-4"></div>
+    </div>
 
-          <h1 class="hero-title">
-            Olli Smart 360
-          </h1>
-
-          <p class="hero-description">
-            Câmera inteligente para segurança interna.
-          </p>
-
-          <div class="hero-actions-group">
-            <a href="../../assets/dispositivos/olli-cam-004-sn/manual-olli-camera-smart-360.pdf" target="_blank" rel="noopener noreferrer" class="secondary-button case-secondary-cta">
-              <span>Baixar manual</span>
-              <svg class="secondary-button-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="12" y1="18" x2="12" y2="12"></line>
-                <polyline points="9 15 12 18 15 15"></polyline>
-              </svg>
-            </a>
-
-            <div class="app-download-buttons">
-              <a href="https://play.google.com/store/apps/details?id=com.iot_app&pli=1" target="_blank" rel="noopener noreferrer" class="app-download-link" aria-label="Baixar no Google Play">
-                <img src="../../assets/dispositivos/shared/button-google-play.png" alt="Google Play" class="app-download-img" width="181" height="49" />
-              </a>
-              <a href="https://apps.apple.com/br/app/olli/id6447080564" target="_blank" rel="noopener noreferrer" class="app-download-link" aria-label="Baixar na App Store">
-                <img src="../../assets/dispositivos/shared/button-app-store.png" alt="App Store" class="app-download-img" width="181" height="49" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Render Showcase -->
-        <div class="hero-media-wrapper">
-          <div class="hero-media-backdrop"></div>
-          <div class="product-card">
-            <img src="../../assets/dispositivos/olli-cam-004-sn/photo-olli-camera-smart-360.webp" alt="Câmera Olli Smart 360" class="product-img" />
-          </div>
-        </div>
+    <div class="account-removal-container">
+      <div class="tally-iframe-wrapper">
+        <iframe
+          data-tally-src="https://tally.so/r/w5dLLN?transparentBackground=1"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Exclusão da conta e dados pessoais da Olli">
+        </iframe>
       </div>
     </div>
-  </section>
+  </main>
 
   <!-- ========================================== -->
   <!-- FOOTER COMPONENT                           -->
@@ -1192,8 +997,8 @@
     <div class="footer-container">
       <div class="footer-bottom">
         <div class="footer-bottom-brand">
-          <a href="../../index.html" class="footer-brand" aria-label="Home Olli">
-            <img src="../../assets/shared/logo-olli.svg" alt="Olli" class="footer-olli-logo" width="82" height="22" />
+          <a href="../#home" class="footer-brand" aria-label="Home Olli">
+            <img src="../assets/shared/logo-olli.svg" alt="Olli" class="footer-olli-logo" width="82" height="22" />
           </a>
         </div>
 
@@ -1213,11 +1018,10 @@
       const mobileMenuLogo = document.querySelector('.mobile-menu-logo');
       const iconBars = document.getElementById('menu-icon-bars');
       const iconClose = document.getElementById('menu-icon-close');
-      const mobileLinks = document.querySelectorAll('.header-mobile-link, .mobile-menu-cta');
+      const mobileLinks = document.querySelectorAll('.header-mobile-link');
       const header = document.getElementById('header');
       const overlay = document.getElementById('mobile-menu-overlay');
 
-      // Toggle Mobile Navigation
       const openMobileMenu = () => {
         if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
         if (mobileMenu) mobileMenu.classList.remove('hidden');
@@ -1249,32 +1053,21 @@
         });
 
         if (mobileMenuCloseBtn) {
-          mobileMenuCloseBtn.addEventListener('click', () => {
-            closeMobileMenu();
-          });
+          mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
         }
 
         if (mobileMenuLogo) {
-          mobileMenuLogo.addEventListener('click', () => {
-            closeMobileMenu();
-          });
+          mobileMenuLogo.addEventListener('click', closeMobileMenu);
         }
 
-        // Close menu on clicking any link
         mobileLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            closeMobileMenu();
-          });
+          link.addEventListener('click', closeMobileMenu);
         });
 
-        // Close menu on clicking overlay
         if (overlay) {
-          overlay.addEventListener('click', () => {
-            closeMobileMenu();
-          });
+          overlay.addEventListener('click', closeMobileMenu);
         }
 
-        // Close menu if window resizes to desktop view
         window.addEventListener('resize', () => {
           if (window.innerWidth >= 768 && menuBtn.getAttribute('aria-expanded') === 'true') {
             closeMobileMenu();
@@ -1289,7 +1082,7 @@
         } else {
           header.classList.remove('scrolled');
         }
-      });
+      }, { passive: true });
     });
   </script>
 </body>
